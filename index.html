@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GATE ECA Timed Quiz</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f6f8;color:#1f2937;margin:0}.wrap{max-width:900px;margin:auto;padding:16px}
+header{background:#17365d;color:#fff;padding:22px;border-radius:14px;margin-bottom:16px}h1{margin:0 0 8px}.badge{display:inline-block;background:#fff;color:#17365d;padding:7px 11px;border-radius:20px;font-weight:700;margin:4px}
+.card,.q{background:#fff;border-radius:12px;padding:18px;margin:12px 0;box-shadow:0 1px 5px #0001}
+input[type=text]{padding:11px;width:min(500px,100%);box-sizing:border-box;border:1px solid #cbd5e1;border-radius:7px;font-size:16px}
+.timer{position:sticky;top:8px;z-index:10;background:#fff;border:2px solid #17365d;border-radius:10px;padding:12px;text-align:center;font-size:22px;font-weight:700;margin-bottom:12px}
+.warn{background:#fff7ed;border:1px solid #fdba74;color:#9a3412;padding:11px;border-radius:9px}.danger{border-color:#b91c1c!important;color:#991b1b}
+.sec{background:#e8eef5;border-left:5px solid #17365d;padding:12px 15px;border-radius:6px;margin:22px 0 10px;font-weight:700}
+.qt{font-weight:700;line-height:1.45}.year{color:#17365d;font-size:13px}label.opt{display:block;padding:9px;border-radius:7px;margin:4px 0;cursor:pointer}label.opt:hover{background:#f1f5f9}
+button{background:#17365d;color:#fff;border:0;border-radius:8px;padding:13px 22px;font-size:16px;font-weight:700;cursor:pointer}button:disabled{opacity:.55;cursor:not-allowed}
+#quizArea,#result{display:none}.center{text-align:center}.score{font-size:30px;color:#17365d;font-weight:800}.small{font-size:13px;color:#64748b}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div id="startScreen" class="card center">
+<h2>GATE PYQ-Based Quiz</h2><p><b>Electronic Circuit Analysis</b></p>
+<p>Diode Circuits • BJT Biasing • MOSFET Biasing</p>
+<p><b>15 Questions | 15 Marks | 25 Minutes</b></p>
+<p class="small">Enter your name. The timer starts only when you click Start Quiz.</p>
+<input id="studentName" type="text" placeholder="Enter your full name" autocomplete="name"><br><br>
+<button id="startBtn">Start Quiz</button>
+</div>
+
+<div id="quizArea">
+<header><h1>GATE PYQ-Based Quiz</h1><div>Electronic Circuit Analysis</div>
+<div><span class="badge">15 Questions</span><span class="badge">15 Marks</span><span class="badge">25 Minutes</span></div></header>
+<div id="timer" class="timer">Time Remaining: 25:00</div>
+<div class="warn"><b>Quiz monitoring:</b> Keep this quiz tab active. Switching tabs/windows is recorded. The quiz is submitted automatically after 3 violations.<br><span id="viol">Violations: 0 / 3</span></div>
+
+<form id="quizForm">
+<div class="sec">Part A – Diode Circuits</div>
+<div class="q"><div class="qt"><span class="year">Q1. [GATE ECE 2024]</span><br>An ideal half-wave rectifier has a 5 V peak secondary voltage. The average load voltage is approximately:</div>
+<label class="opt"><input type="radio" name="q1" value="A"> A. 1.59 V</label><label class="opt"><input type="radio" name="q1" value="B"> B. 2.50 V</label><label class="opt"><input type="radio" name="q1" value="C"> C. 3.18 V</label><label class="opt"><input type="radio" name="q1" value="D"> D. 5.00 V</label></div>
+<div class="q"><div class="qt"><span class="year">Q2. [GATE ECE 2022]</span><br>In an ideal-diode circuit, the correct analysis procedure is:</div>
+<label class="opt"><input type="radio" name="q2" value="A"> A. Assume all diodes ON without verification</label><label class="opt"><input type="radio" name="q2" value="B"> B. Assume diode states and verify the resulting bias conditions</label><label class="opt"><input type="radio" name="q2" value="C"> C. Replace all diodes by capacitors</label><label class="opt"><input type="radio" name="q2" value="D"> D. Replace all diodes by current sources</label></div>
+<div class="q"><div class="qt"><span class="year">Q3. [GATE ECE 2020]</span><br>A silicon diode uses the constant-voltage model. Its approximate forward voltage is:</div>
+<label class="opt"><input type="radio" name="q3" value="A"> A. 0 V</label><label class="opt"><input type="radio" name="q3" value="B"> B. 0.3 V</label><label class="opt"><input type="radio" name="q3" value="C"> C. 0.7 V</label><label class="opt"><input type="radio" name="q3" value="D"> D. 1.5 V</label></div>
+<div class="q"><div class="qt"><span class="year">Q4. [GATE ECE 2018]</span><br>A Zener diode operates in breakdown at 6.2 V. The approximate voltage across it is:</div>
+<label class="opt"><input type="radio" name="q4" value="A"> A. 0.7 V</label><label class="opt"><input type="radio" name="q4" value="B"> B. 5.5 V</label><label class="opt"><input type="radio" name="q4" value="C"> C. 6.2 V</label><label class="opt"><input type="radio" name="q4" value="D"> D. 12.4 V</label></div>
+<div class="q"><div class="qt"><span class="year">Q5. [GATE ECE 2015]</span><br>For an ideal diode in a clipper, when it is forward biased, its equivalent is:</div>
+<label class="opt"><input type="radio" name="q5" value="A"> A. Open circuit</label><label class="opt"><input type="radio" name="q5" value="B"> B. Short circuit</label><label class="opt"><input type="radio" name="q5" value="C"> C. Current source</label><label class="opt"><input type="radio" name="q5" value="D"> D. Capacitor</label></div>
+
+<div class="sec">Part B – BJT Biasing</div>
+<div class="q"><div class="qt"><span class="year">Q6. [GATE ECE 2025]</span><br>An ideal BJT operates in forward-active mode with β = 100 and base current 10 μA. The collector current is:</div>
+<label class="opt"><input type="radio" name="q6" value="A"> A. 0.01 mA</label><label class="opt"><input type="radio" name="q6" value="B"> B. 0.1 mA</label><label class="opt"><input type="radio" name="q6" value="C"> C. 1 mA</label><label class="opt"><input type="radio" name="q6" value="D"> D. 10 mA</label></div>
+<div class="q"><div class="qt"><span class="year">Q7. [GATE ECE 2017]</span><br>For a BJT bias circuit designed for V<sub>CE</sub> = V<sub>CC</sub>/2, the appropriate analysis for resistor values is:</div>
+<label class="opt"><input type="radio" name="q7" value="A"> A. AC small-signal analysis</label><label class="opt"><input type="radio" name="q7" value="B"> B. DC bias analysis using KVL and transistor current relationships</label><label class="opt"><input type="radio" name="q7" value="C"> C. High-frequency analysis</label><label class="opt"><input type="radio" name="q7" value="D"> D. Miller-effect analysis</label></div>
+<div class="q"><div class="qt"><span class="year">Q8. [GATE ECE 2015]</span><br>A BJT is in saturation. The junction conditions are:</div>
+<label class="opt"><input type="radio" name="q8" value="A"> A. BE forward, CB reverse</label><label class="opt"><input type="radio" name="q8" value="B"> B. BE reverse, CB forward</label><label class="opt"><input type="radio" name="q8" value="C"> C. Both BE and CB forward</label><label class="opt"><input type="radio" name="q8" value="D"> D. Both BE and CB reverse</label></div>
+<div class="q"><div class="qt"><span class="year">Q9. [GATE ECE 2014]</span><br>If the active-region collector-current calculation exceeds the current that the collector circuit can provide, the BJT tends toward:</div>
+<label class="opt"><input type="radio" name="q9" value="A"> A. Cutoff</label><label class="opt"><input type="radio" name="q9" value="B"> B. Forward-active region</label><label class="opt"><input type="radio" name="q9" value="C"> C. Saturation</label><label class="opt"><input type="radio" name="q9" value="D"> D. Reverse breakdown</label></div>
+<div class="q"><div class="qt"><span class="year">Q10. [GATE ECE 2010]</span><br>For DC analysis of a silicon BJT in forward-active mode, the base-emitter junction is commonly represented by:</div>
+<label class="opt"><input type="radio" name="q10" value="A"> A. An open circuit</label><label class="opt"><input type="radio" name="q10" value="B"> B. A constant voltage drop of approximately 0.7 V</label><label class="opt"><input type="radio" name="q10" value="C"> C. A zero-voltage short circuit</label><label class="opt"><input type="radio" name="q10" value="D"> D. A capacitor</label></div>
+
+<div class="sec">Part C – MOSFET Biasing</div>
+<div class="q"><div class="qt"><span class="year">Q11. [GATE ECE 2026]</span><br>For a long-channel n-channel enhancement MOSFET to operate in saturation:</div>
+<label class="opt"><input type="radio" name="q11" value="A"> A. V<sub>GS</sub> &lt; V<sub>T</sub></label><label class="opt"><input type="radio" name="q11" value="B"> B. V<sub>DS</sub> &lt; V<sub>GS</sub> − V<sub>T</sub></label><label class="opt"><input type="radio" name="q11" value="C"> C. V<sub>GS</sub> &gt; V<sub>T</sub> and V<sub>DS</sub> ≥ V<sub>GS</sub> − V<sub>T</sub></label><label class="opt"><input type="radio" name="q11" value="D"> D. V<sub>GS</sub> = 0</label></div>
+<div class="q"><div class="qt"><span class="year">Q12. [GATE ECE 2024]</span><br>For a long-channel NMOS in saturation, neglecting channel-length modulation, transconductance is primarily determined by:</div>
+<label class="opt"><input type="radio" name="q12" value="A"> A. Gate resistance only</label><label class="opt"><input type="radio" name="q12" value="B"> B. Drain current and MOSFET transconductance parameter</label><label class="opt"><input type="radio" name="q12" value="C"> C. Load resistance only</label><label class="opt"><input type="radio" name="q12" value="D"> D. Gate current only</label></div>
+<div class="q"><div class="qt"><span class="year">Q13. [GATE ECE 2022]</span><br>An enhancement NMOS has V<sub>T</sub> = 1 V and V<sub>GS</sub> = 2 V. The overdrive voltage is:</div>
+<label class="opt"><input type="radio" name="q13" value="A"> A. 0.5 V</label><label class="opt"><input type="radio" name="q13" value="B"> B. 1 V</label><label class="opt"><input type="radio" name="q13" value="C"> C. 2 V</label><label class="opt"><input type="radio" name="q13" value="D"> D. 3 V</label></div>
+<div class="q"><div class="qt"><span class="year">Q14. [GATE ECE 2005]</span><br>An n-channel enhancement MOSFET has V<sub>T</sub> = 0.75 V. If V<sub>GS</sub> &lt; V<sub>T</sub>, it operates in:</div>
+<label class="opt"><input type="radio" name="q14" value="A"> A. Cutoff</label><label class="opt"><input type="radio" name="q14" value="B"> B. Triode</label><label class="opt"><input type="radio" name="q14" value="C"> C. Saturation</label><label class="opt"><input type="radio" name="q14" value="D"> D. Breakdown</label></div>
+<div class="q"><div class="qt"><span class="year">Q15. [GATE ECE 2003]</span><br>For an n-channel MOSFET, increasing V<sub>DS</sub> while keeping V<sub>GS</sub> fixed can move the device from the linear region toward:</div>
+<label class="opt"><input type="radio" name="q15" value="A"> A. Cutoff</label><label class="opt"><input type="radio" name="q15" value="B"> B. Saturation</label><label class="opt"><input type="radio" name="q15" value="C"> C. Reverse-active region</label><label class="opt"><input type="radio" name="q15" value="D"> D. Breakdown</label></div>
+
+<button type="submit" id="submitBtn">Submit Quiz</button>
+</form></div>
+
+<div id="result" class="card center"></div>
+</div>
+<script>
+const ANSWERS={q1:"A",q2:"B",q3:"C",q4:"C",q5:"B",q6:"C",q7:"B",q8:"C",q9:"C",q10:"B",q11:"C",q12:"B",q13:"B",q14:"A",q15:"B"};
+const WEB_APP_URL="https://script.google.com/macros/s/AKfycbwXJWpsF1BCA00_zuZ95cgFDl1Y9F7nwR1w-DDpj1NI1JXvNaN0qbC41HqK7jUP8xEI/exec";
+let started=false,submitted=false,remaining=1500,violations=0,away=false,interval=null;
+
+function updateTimer(){let m=Math.floor(remaining/60),s=remaining%60;timer.textContent=`Time Remaining: ${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;timer.classList.toggle("danger",remaining<=60);}
+function violation(){if(!started||submitted||!away)return;violations++;away=false;viol.textContent=`Violations: ${violations} / 3`;if(violations>=3)submitQuiz(true,"Quiz submitted automatically after 3 monitoring violations.");else alert(`Warning: tab/window change detected. Violation ${violations} of 3.`);}
+document.addEventListener("visibilitychange",()=>{if(!started||submitted)return;if(document.hidden)away=true;else if(away)violation();});
+window.addEventListener("blur",()=>{if(started&&!submitted)away=true;});
+window.addEventListener("focus",()=>{if(started&&!submitted&&away)violation();});
+document.addEventListener("contextmenu",e=>{if(started&&!submitted)e.preventDefault();});
+document.addEventListener("keydown",e=>{if(!started||submitted)return;let k=e.key.toLowerCase();if(e.key==="F12"||(e.ctrlKey||e.metaKey)&&["c","u","s","p","a","l","t","n","w"].includes(k))e.preventDefault();});
+
+startBtn.onclick=()=>{let n=studentName.value.trim();if(!n){alert("Please enter your name.");studentName.focus();return;}started=true;startScreen.style.display="none";quizArea.style.display="block";interval=setInterval(()=>{if(submitted)return;remaining--;updateTimer();if(remaining<=0){clearInterval(interval);submitQuiz(true,"Time is up! Quiz submitted automatically.");}},1000);updateTimer();};
+
+async function submitQuiz(auto=false,msg=""){
+ if(submitted)return; submitted=true; clearInterval(interval);
+ const name=studentName.value.trim();let score=0,answered=0,answers={};
+ for(let i=1;i<=15;i++){let r=document.querySelector(`input[name="q${i}"]:checked`);answers["q"+i]=r?r.value:"";if(r)answered++;if(r&&r.value===ANSWERS["q"+i])score++;}
+ document.querySelectorAll("input,button").forEach(x=>x.disabled=true);
+ result.style.display="block";result.innerHTML=`<h2>${msg||"Quiz Submitted"}</h2><div class="score">${score} / 15</div><p>${name}</p><p>Answered: ${answered}/15 &nbsp; | &nbsp; Monitoring violations: ${violations}</p><p class="small">Saving your response...</p>`;
+ try{
+   if(!WEB_APP_URL.includes("PASTE_")){
+     await fetch(WEB_APP_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name,score,answered,violations,submittedAt:new Date().toISOString(),answers})});
+     result.querySelector(".small").textContent="Your response has been submitted.";
+   }else result.querySelector(".small").textContent="Teacher Sheet is not connected yet. Set the Apps Script Web App URL in the HTML file.";
+ }catch(e){result.querySelector(".small").textContent="Quiz scored locally, but the teacher sheet could not be reached. Please inform your teacher."}
+ result.scrollIntoView({behavior:"smooth"});
+}
+quizForm.addEventListener("submit",e=>{e.preventDefault();submitQuiz();});
+</script>
+</body></html>
